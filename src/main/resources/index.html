@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini Demo</title>
+</head>
+<body>
+<h1>AI 问答 Demo</h1>
+<label>Prompt：<input type="text" id="prompt" size="50" value="What is your name?"></label>
+<button onclick="ask()">发送</button>
+<pre id="result"></pre>
+
+<script>
+    async function ask() {
+        const prompt = document.getElementById('prompt').value;
+        const res = await fetch('/api/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ model: 'gemini-2.0-flash-001', prompt })
+        });
+        const text = await res.text();
+        document.getElementById('result').innerText = text;
+    }
+</script>
+</body>
+</html>
