@@ -1,4 +1,4 @@
-package com.example.brainstromai.model;
+package com.example.brainstromai.model.db;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
