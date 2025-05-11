@@ -5,22 +5,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Project {
 
     @Id
-    public Long projectId;
+    public long projectId = System.currentTimeMillis();
 
     public String projectName;
     public String projectPrompt;
 
     @OneToMany
-    public List<ProjectRole> projectRoles;
+    public List<ProjectRole> projectRoles = new ArrayList<>();
 
     @OneToOne
     public ProjectReport projectReport;
+
 
 }
 

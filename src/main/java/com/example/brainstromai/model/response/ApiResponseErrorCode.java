@@ -3,7 +3,9 @@ package com.example.brainstromai.model.response;
 public enum ApiResponseErrorCode {
     SUCCESS(0),
     LoginFail(1),
-    SignUpFail(2);
+    SignUpFail(2),
+    CreateProjectFail(3);
+
     private final int code;
 
     ApiResponseErrorCode(int code) {
