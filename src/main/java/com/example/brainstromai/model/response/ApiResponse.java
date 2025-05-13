@@ -41,5 +41,9 @@ public class ApiResponse<T> {
     public static <T> ApiResponse<T> fail(T data, ApiResponseErrorCode code) {
         return new ApiResponse<T>(data, "fail", code.getCode());
     }
+
+    public static <T> ApiResponse<T> fail(T data, ApiResponseErrorCode code, String message) {
+        return new ApiResponse<T>(data, message, code.getCode());
+    }
 }
 

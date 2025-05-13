@@ -37,7 +37,7 @@ public class ProjectController {
 
         Optional<User> userOptional = userRepository.findById(createProjectRequest.username);
         if (userOptional.isEmpty()) {
-            return ResponseEntity.ok(ApiResponse.fail("", ApiResponseErrorCode.CreateProjectFail));
+            return ResponseEntity.ok(ApiResponse.fail("invalid user", ApiResponseErrorCode.CreateProjectFail));
         } else {
             User user = userOptional.get();
             Project project = new Project();
@@ -46,6 +46,7 @@ public class ProjectController {
             project.projectRoles = createProjectRequest.projectRoles.stream().map(role -> {
                 ProjectRole projectRole = new ProjectRole();
                 projectRole.roleName = role.roleName;
+                projectRole.roleFocusArea = role.roleFocusArea;
                 projectRole.rolePrompt = role.rolePrompt;
                 projectRoleRepository.save(projectRole);
 
@@ -64,7 +65,7 @@ public class ProjectController {
     public ResponseEntity<ApiResponse<List<Project>>> listProjects(@RequestParam String username) {
         Optional<User> userOptional = userRepository.findById(username);
         if (userOptional.isEmpty()) {
-            return ResponseEntity.ok(ApiResponse.fail(new ArrayList<>(), ApiResponseErrorCode.SUCCESS));
+            return ResponseEntity.ok(ApiResponse.fail(new ArrayList<>(), ApiResponseErrorCode.InvalidUser));
         } else {
             User user = userOptional.get();
             return ResponseEntity.ok(ApiResponse.success(user.projects));

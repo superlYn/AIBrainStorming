@@ -1,9 +1,6 @@
 package com.example.brainstromai.model.db;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +9,8 @@ import java.util.List;
 public class Project {
 
     @Id
-    public long projectId = System.currentTimeMillis();
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long projectId;
 
     public String projectName;
     public String projectPrompt;

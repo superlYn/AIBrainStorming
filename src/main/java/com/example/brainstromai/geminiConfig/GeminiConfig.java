@@ -1,4 +1,4 @@
-package com.example.brainstromai;
+package com.example.brainstromai.geminiConfig;
 
 import com.google.genai.Client;
 import org.springframework.beans.factory.annotation.Value;

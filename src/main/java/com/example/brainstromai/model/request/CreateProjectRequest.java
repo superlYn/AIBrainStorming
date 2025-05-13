@@ -12,6 +12,7 @@ public class CreateProjectRequest {
 
     public static class Role {
         public String roleName;
+        public String roleFocusArea = "";
         public String rolePrompt;
     }
 }
