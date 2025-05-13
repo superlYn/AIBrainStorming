@@ -6,7 +6,8 @@ public enum ApiResponseErrorCode {
     SignUpFail(2),
     CreateProjectFail(3),
     InvalidUser(4),
-    RuntimeException(5);
+    InvalidId(5),
+    RuntimeException(6);
 
     private final int code;
 

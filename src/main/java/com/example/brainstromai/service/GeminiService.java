@@ -20,11 +20,11 @@ public class GeminiService {
     /**
      * 同步生成：直接返回完整文本
      */
-    public String generateKeywords() {
+    public String generateKeywords(String rolesStr) {
 
         GenerateContentResponse response =
                 client.models.generateContent(MODEL_VERSION,
-                        "我想头脑风暴如何推广AI工具，你需要使用的角色有（1.工程师，2.销售，3.主管的角色） 返回给我idea的keyword，以及desc",
+                        "我想头脑风暴如何推广AI工具，你需要使用的角色有（" + rolesStr + "） 返回给我idea的keyword，以及desc",
                         KeywordsGenerateConfigBuilder.build());
 
         return response.text();

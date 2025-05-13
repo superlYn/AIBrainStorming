@@ -27,8 +27,7 @@ public class KeywordService {
         this.keywordRepository = keywordRepository;
     }
 
-    public void saveKeywordsToProject(long projectId, String keywordsResponse) throws Exception {
-        Project project = projectRepository.findById(projectId).orElseThrow(() -> new Exception("invalid project id"));
+    public void saveKeywordsToProject(Project project, String keywordsResponse) throws Exception {
 
         List<ProjectRole> projectRoles = project.projectRoles;
         if (projectRoles.isEmpty()) {
@@ -69,7 +68,7 @@ public class KeywordService {
 
     public Keyword refreshKeywords(Keyword keyword, String newKeywordJson) throws Exception {
         JsonNode node = objectMapper.readTree(newKeywordJson);
-       
+
         keyword.keywordDesc = node.get("keywordDesc").asText();
         keywordRepository.save(keyword);
         return keyword;
